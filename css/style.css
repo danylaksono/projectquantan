@@ -1,3 +1,37 @@
+
+/* 
+-------------------------------------
+	 Project Quantan Xingingi
+	   Bina Marga Pekanbaru 
+-------------------------------------	*/
+
+
+
+/* -----------------
+		Imports 
+   ----------------- */ 
+
+/* import font dkk di sini */
+
+
+/* -----------------
+		Body
+   ----------------- */ 
+
+body{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	padding-top: 51px;
+	font-size: 14px;
+	
+}
+
+.no-resize{
+	resize: none !important;
+}
+
+
 .largeIcon{
     font-size: 50px;
     padding-left: 35px;
@@ -7,3 +41,35 @@
 a:hover{
     text-decoration: none;
 }
+
+/* -----------------
+		Navbar
+   ----------------- */ 
+
+   /*ganti font nanti */
+   
+/* -----------------
+		Mukapeta
+   ----------------- */ 
+   
+#mukapeta {
+	background-color:#777;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	height: 680px;
+	width: 100%;
+	display:block;
+	padding: 90px 0 60px;	
+}
+
+#mukapeta .map {
+	padding-bottom: 52px;
+	}
+
+
+   
+   
+   
+   
+   
