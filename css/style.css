@@ -7,3 +7,8 @@
 a:hover{
     text-decoration: none;
 }
+
+.map {
+        height: 400px;
+        width: 100%;
+      }
