@@ -1,3 +1,18 @@
+/* 
+
+=======================================================================
+  Main CSS Style for Kuantan Singingi RIS (Road Information Systems) 
+                         PPIDS - UGM
+
+======================================================================= */
+
+
+
+
+/*-------------------------------------------
+		    Imports, main body
+  ------------------------------------------- */
+
 .largeIcon{
     font-size: 50px;
     padding-left: 35px;
@@ -8,8 +23,17 @@ a:hover{
     text-decoration: none;
 }
 
+/*-------------------------------------------
+		          Navbar
+  ------------------------------------------- */
 
-
+  
+  
+  
+/*-------------------------------------------
+		    Muka Peta
+  ------------------------------------------- */
+  
 #mukapeta {
 	background-color:#fff;
 	background-size: cover;
@@ -21,9 +45,10 @@ a:hover{
 	padding: 40px 0 50px;
 	
 }
-}
+
 
 #mukapeta .map {
         height: 400px;
         width: 100%;
       }
+	  
