@@ -2,14 +2,19 @@
 
 <html>
 <head>
+	<title>Sistem Informasi Jaringan Jalan Kuantan Singingi</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Website Sistem Informasi Jaringan Jalan Kuantan Singingi">
     <meta name="author" content="PPIDS-UGM">
-    <title>Sistem Informasi Jaringan Jalan Kuantan Singingi</title>
+    
+	<!-- import external -->
 	<link rel="shortcut icon" href="http://www.kuansing.go.id/wp/wp-content/themes/kuansing/favicon.ico">
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	
+	<!-- openlayers mapscript -->
 	<script src="js/OpenLayers.js"></script>
 	<script>
       function init() {
@@ -31,7 +36,8 @@
           margin: 0;
       }
     </style>
-</head>
+
+	</head>
 
 <body onload="init();">
     <!--Baris Menu-->
@@ -55,6 +61,27 @@
         </div>
     </div>
     
+	<!-- Side Menu -->
+    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+			<li class="sidebar-brand">Start Bootstrap</a>
+			</li>
+			<li><a href="#top">Home</a>
+			</li>
+			<li><a href="#about">About</a>
+			</li>
+			<li><a href="#services">Services</a>
+			</li>
+			<li><a href="#portfolio">Portfolio</a>
+			</li>
+			<li><a href="#contact">Contact</a>
+			</li>
+        </ul>
+    </div>
+    <!-- /Side Menu -->
+	
 	
 	<!--Muka Peta-->
 	<section id="mukapeta">
@@ -74,5 +101,20 @@
 	<!-- references. ditaruh di belakang biar gak lemot -->
     <script src="js/jquery.js" ></script>
     <script src="js/bootstrap.js" ></script>
+	<!-- Custom JavaScript for the Side Menu -->
+    <script>
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    </script>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    </script>
+
+
 </body>
 </html>
