@@ -10,7 +10,18 @@ a:hover{
 
 
 
-
+#mukapeta {
+	background-color:#fff;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	height: 780px;
+	width: 100%;
+	display: block;
+	padding: 40px 0 50px;
+	
+}
+}
 
 .map {
         height: 400px;
