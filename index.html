@@ -55,7 +55,40 @@
             
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                        <li><a href="#masuk" data-toggle="modal">Masuk</a></li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Masuk <b class="caret"></b></a>
+                            <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+				   <li>
+				      <div class="row">
+					 <div class="col-md-12">
+					    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+					       <div class="form-group">
+						  <label class="sr-only" for="exampleInputEmail2">Email address</label>
+						  <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+					       </div>
+					       <div class="form-group">
+						  <label class="sr-only" for="exampleInputPassword2">Password</label>
+						  <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+					       </div>
+					       <div class="checkbox">
+						  <label>
+						  <input type="checkbox"> Remember me
+						  </label>
+					       </div>
+					       <div class="form-group">
+						  <button type="submit" class="btn btn-success btn-block">Sign in</button>
+					       </div>
+					    </form>
+					 </div>
+				      </div>
+				   </li>
+				   <li class="divider"></li>
+				   <li>
+				      <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
+				      <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
+				   </li>
+				</ul>
+                        </li>
                         <li><a href="#hubungi" data-toggle="modal">Hubungi kami</a></li>
                 </ul>
 			</div>
@@ -72,15 +105,104 @@
                     <div class="row">
                         <div class="col-sm-3 col-md-3">
                             <div class="panel-group" id="accordion">
-                                <div class="panel panel-inverse">
+                                <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
-                                            </span>Content</a>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#daftarLayer">
+                                                Daftar Layer
+                                            </a>
                                         </h4>
                                     </div>
+                                    <div id="daftarLayer" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <label class="checkbox">
+						<input type="checkbox" value="layerJalan">Layer Jalan</input>
+					    </label>
+					    <label class="checkbox">
+						<input type="checkbox" value="layerAdmin">Layer Batas Administrasi</input>
+					    </label>
+					    <label class="checkbox">
+						<input type="checkbox" value="layerBackground">Layer Background</input>
+					    </label>
+                                        </div>
+                                    </div>                                    
                                 </div>
-                            </div>
+                                <!--second menu
+                                ============================-->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#query">
+                                                Query
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="query" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>
+                                                        <a href="#">first item</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="#">second item</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="#">third item</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="#">Comments</a>
+                                                        <span class="badge">42</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <!--third menu
+                                ============================-->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#editData">
+                                                Edit Data
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="editData" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>
+                                                        <a href="#">first item</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="#">second item</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="#">third item</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <a href="#">Comments</a>
+                                                        <span class="badge">42</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>                                    
+                                </div>
                         </div>
                     </div>
                 </div>
