@@ -18,35 +18,17 @@
 	<script src="js/OpenLayers.js"></script>
 	<link rel="stylesheet" href="js/theme/default/style.css">
 	
-	<!--script>
-      function init() {
-        map = new OpenLayers.Map("map");
-        var mapnik         = new OpenLayers.Layer.OSM();
-        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-        var toProjection   = new OpenLayers.Projection("EPSG:3857"); // to Spherical Mercator Projection
-        var position       = new OpenLayers.LonLat(101.45000,0.53333).transform( fromProjection, toProjection);
-        var zoom           = 9; 
- 
-        map.addLayer(mapnik);
-        map.setCenter(position, zoom );
-		
-		basemap = new OpenLayers.Layer.WMS( "jaringanjalanwgs",
-		"http://localhost:8080/geoserver/projectkuantan/wms?", {layers: 'jaringanjalanwgs'},
-		{projection: new OpenLayers.Projection("EPSG:4326")});
-		
-		map.addLayer(basemap);
-		//map.zoomToExtent(basemap.getDataExtent());
-		
-		window.alert(basemap.getDataExtent());
-		
-      }
-    </script-->
-	
 	<style type="text/css">
     html, body, #map {
         height: 100%;
 	}
-	
+	.olControlAttribution {
+		bottom:5px;
+	}	
+	.olControlMousePosition {
+		padding-bottom:50px;
+		left:5px;
+	}
     </style>
 
 	</head>

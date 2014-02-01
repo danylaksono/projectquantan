@@ -8,13 +8,17 @@ function initMap() {
 	
 	//map container
 	map = new OpenLayers.Map("map",
-		{projection: mercator},
+		{projection: mercator,
+		displayProjection: geographic},
 		{controls: []}
 		);
 	
 	//basemap
 	var osm = new OpenLayers.Layer.OSM();
     map.addLayers([osm]);
+	
+	map.addControl(new OpenLayers.Control.PanZoomBar());
+	map.addControl(new OpenLayers.Control.MousePosition());
 	
 	//wms
 	wms = new OpenLayers.Layer.WMS("jaringanjalanwgs",
@@ -29,7 +33,7 @@ function initMap() {
 	
 	map.addLayer(wms);
     
-    // if you want to use Geographic coords, transform to ESPG:900913
+    // On the fly reprojection
     var bounds = new OpenLayers.Bounds(
                     101.2145252700034, -0.9550128489747423,
                     101.91875368039334, 0.0197563099999978
