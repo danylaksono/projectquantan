@@ -51,7 +51,7 @@
 
 	</head>
 
-<body onload="init()">
+<body onload="initMap()">
     
 	<!--Navbar-->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -67,41 +67,42 @@
             
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Masuk <b class="caret"></b></a>
-                            <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
-				   <li>
-				      <div class="row">
-					 <div class="col-md-12">
-					    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-					       <div class="form-group">
-						  <label class="sr-only" for="exampleInputEmail2">Email address</label>
-						  <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-					       </div>
-					       <div class="form-group">
-						  <label class="sr-only" for="exampleInputPassword2">Password</label>
-						  <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-					       </div>
-					       <div class="checkbox">
-						  <label>
-						  <input type="checkbox"> Remember me
-						  </label>
-					       </div>
-					       <div class="form-group">
-						  <button type="submit" class="btn btn-success btn-block">Sign in</button>
-					       </div>
-					    </form>
-					 </div>
-				      </div>
-				   </li>
-				   <li class="divider"></li>
-				   <li>
-				      <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
-				      <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
-				   </li>
-				</ul>
-                        </li>
-                        <li><a href="#hubungi" data-toggle="modal">Hubungi kami</a></li>
+                    <li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Masuk <b class="caret"></b></a>
+                        <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+						   <li>
+								<div class="row">
+								<div class="col-md-12">
+								<form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+								   <div class="form-group">
+								  <label class="sr-only" for="exampleInputEmail2">Email address</label>
+								  <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+								   </div>
+								   <div class="form-group">
+								  <label class="sr-only" for="exampleInputPassword2">Password</label>
+								  <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+								   </div>
+								   <div class="checkbox">
+								  <label>
+								  <input type="checkbox"> Remember me
+								  </label>
+								   </div>
+								   <div class="form-group">
+								  <button type="submit" class="btn btn-success btn-block">Sign in</button>
+								   </div>
+								</form>
+								</div>
+							  </div>
+							</li>
+							<li class="divider"></li>
+							<li>
+							<input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
+							<input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
+							</li>
+						</ul>
+                    </li>
+                    <li><a href="#hubungi" data-toggle="modal">Hubungi kami</a></li>
+					<li><a href="#bantuan" data-toggle="modal">Bantuan</a></li>
                 </ul>
 			</div>
         </div>
@@ -128,13 +129,13 @@
                                     <div id="daftarLayer" class="panel-collapse collapse in">
                                         <div class="panel-body">
                                             <label class="checkbox">
-						<input type="checkbox" value="layerJalan">Layer Jalan</input>
+						<input type="checkbox" id="layerJalan">Layer Jalan</input>
 					    </label>
 					    <label class="checkbox">
-						<input type="checkbox" value="layerAdmin">Layer Batas Administrasi</input>
+						<input type="checkbox" id="layerAdmin">Layer Batas Administrasi</input>
 					    </label>
 					    <label class="checkbox">
-						<input type="checkbox" value="layerBackground">Layer Background</input>
+						<input type="checkbox" id="layerBackground">Layer Background</input>
 					    </label>
                                         </div>
                                     </div>                                    
@@ -145,7 +146,7 @@
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#query">
-                                                Query
+                                                Pencarian
                                             </a>
                                         </h4>
                                     </div>
@@ -226,9 +227,9 @@
 	
 	<!--Muka Peta-->
 	<section id="mukapeta">
+		<script type="text/javascript" src="basemap.js"></script>
 		<div id="map">
 		</div>
-		<script type="text/javascript" src="lhambuh.js"></script>
 	</section>
 	
 	
@@ -314,7 +315,7 @@
 	<footer>
 		<div class="navbar navbar-default navbar-fixed-bottom">
 			<div class="container">
-				<p class="navbar-text">Copyright &copy; Kuantan Singingi </p>
+				<p class="navbar-text">Copyright 2014 &copy; Kuantan Singingi </p>
 			</div>  
 		</div>
 	</footer>
