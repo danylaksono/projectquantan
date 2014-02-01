@@ -16,30 +16,42 @@
 	
 	<!-- openlayers mapscript -->
 	<script src="js/OpenLayers.js"></script>
-	<script>
+	<link rel="stylesheet" href="js/theme/default/style.css">
+	
+	<!--script>
       function init() {
         map = new OpenLayers.Map("map");
         var mapnik         = new OpenLayers.Layer.OSM();
         var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-        var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+        var toProjection   = new OpenLayers.Projection("EPSG:3857"); // to Spherical Mercator Projection
         var position       = new OpenLayers.LonLat(101.45000,0.53333).transform( fromProjection, toProjection);
         var zoom           = 9; 
  
         map.addLayer(mapnik);
         map.setCenter(position, zoom );
+		
+		basemap = new OpenLayers.Layer.WMS( "jaringanjalanwgs",
+		"http://localhost:8080/geoserver/projectkuantan/wms?", {layers: 'jaringanjalanwgs'},
+		{projection: new OpenLayers.Projection("EPSG:4326")});
+		
+		map.addLayer(basemap);
+		//map.zoomToExtent(basemap.getDataExtent());
+		
+		window.alert(basemap.getDataExtent());
+		
       }
-    </script>
+    </script-->
+	
 	<style type="text/css">
-      html, body, #map {
-          width: 100%;
-          height: 100%;
-          margin: 0;
-      }
+    html, body, #map {
+        height: 100%;
+	}
+	
     </style>
 
 	</head>
 
-<body onload="init();">
+<body onload="init()">
     
 	<!--Navbar-->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -214,24 +226,13 @@
 	
 	<!--Muka Peta-->
 	<section id="mukapeta">
-		<div id="map"></div>
+		<div id="map">
+		</div>
+		<script type="text/javascript" src="lhambuh.js"></script>
 	</section>
 	
 	
-    <!-- Footer-->
-	<footer>
-		<div class="navbar navbar-default navbar-fixed-bottom">
-			<div class="container">
-				<p class="navbar-text">Copyright &copy; Kuantan Singingi </p>
-			</div>  
-		</div>
-	</footer>
-
-	<!-- references. ditaruh di belakang biar gak lemot -->
-    <script src="js/jquery.js" ></script>
-    <script src="js/bootstrap.js" ></script>
-	
-	<!--kotak dialog Masuk Admin-->
+    <!--kotak dialog Masuk Admin-->
 	<div class="modal fade" id="masuk">
 	    <div class="modal-dialog">
 		<div class="modal-content">
@@ -307,8 +308,22 @@
 	    </div>
 	</div>
 	
+	
+	
+	<!-- Footer-->
+	<footer>
+		<div class="navbar navbar-default navbar-fixed-bottom">
+			<div class="container">
+				<p class="navbar-text">Copyright &copy; Kuantan Singingi </p>
+			</div>  
+		</div>
+	</footer>
+
+	<!-- references. ditaruh di belakang biar gak lemot -->
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="js/bootstrap.js" ></script>
         
-	<!-- Side Menu -->
+	<!-- Script for side Menu -->
     <script>
     $("#menu-close").click(function(e) {
         e.preventDefault();
