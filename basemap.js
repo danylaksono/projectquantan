@@ -17,11 +17,11 @@ function initMap() {
 	var osm = new OpenLayers.Layer.OSM();
     map.addLayers([osm]);
 	
-	map.addControl(new OpenLayers.Control.PanZoomBar());
+	//map.addControl(new OpenLayers.Control.PanZoomBar());   //diaktifkan lagi kalau sudah waktunya
 	map.addControl(new OpenLayers.Control.MousePosition());
 	
 	//wms
-	wms = new OpenLayers.Layer.WMS("jaringanjalanwgs",
+	jalanwms = new OpenLayers.Layer.WMS("jaringanjalanwgs",
 				"http://localhost:8080/geoserver/Projectkuantan/wms",	//change here
 				{
 					LAYERS: 'Projectkuantan:jaringanjalanwgs',			//and here
@@ -31,7 +31,18 @@ function initMap() {
 					tiled: true
 				});
 	
-	map.addLayer(wms);
+	kabwms = new OpenLayers.Layer.WMS("kuansingkab",
+				"http://localhost:8080/geoserver/Projectkuantan/wms",	//change here
+				{
+					LAYERS: 'Projectkuantan:kuansingkab',			//and here
+					STYLES: 'polygon',
+					projection: geographic,
+					transparent:true,
+					tiled: true
+				});
+	
+	map.addLayer(jalanwms);
+	map.addLayer(kabwms);
     
     // On the fly reprojection
     var bounds = new OpenLayers.Bounds(
@@ -51,13 +62,25 @@ function initMap() {
 	
 	function checkJalan () {
 	if ($("#layerJalan").prop('checked')==true) {
-        wms.setVisibility(true);
+        jalanwms.setVisibility(true);
     } else {
-        wms.setVisibility(false);
+        jalanwms.setVisibility(false);
     }
 	};
 	$("#layerJalan").change(function event(){checkJalan()});
 	
+	
+	//#LayerKuansingkab DOM 
+	$("#layerAdmin").prop('checked', true);
+	
+	function checkKab () {
+	if ($("#layerAdmin").prop('checked')==true) {
+        kabwms.setVisibility(true);
+    } else {
+        kabwms.setVisibility(false);
+    }
+	};
+	$("#layerAdmin").change(function event(){checkKab()});
 	
 	
 	//#Basemap DOM 
