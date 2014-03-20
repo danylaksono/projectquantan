@@ -22,9 +22,9 @@ function initMap() {
 	
 	//wms
 	jalanwms = new OpenLayers.Layer.WMS("jaringanjalanwgs",
-				"http://localhost:8080/geoserver/Projectkuantan/wms",	//change here
+				"http://localhost:8080/geoserver/Quansing/wms",	//change here
 				{
-					LAYERS: 'Projectkuantan:jaringanjalanwgs',			//and here
+					LAYERS: 'Quansing:JaringanJalan',			//and here
 					STYLES: '',
 					projection: geographic,
 					transparent:true,
@@ -32,9 +32,9 @@ function initMap() {
 				});
 	
 	kabwms = new OpenLayers.Layer.WMS("kuansingkab",
-				"http://localhost:8080/geoserver/Projectkuantan/wms",	//change here
+				"http://localhost:8080/geoserver/Quansing/wms",	//change here
 				{
-					LAYERS: 'Projectkuantan:kuansingkab',			//and here
+					LAYERS: 'Quansing:JaringanJalan2',			//and here
 					STYLES: 'polygon',
 					projection: geographic,
 					transparent:true,
@@ -42,7 +42,7 @@ function initMap() {
 				});
 	
 	map.addLayer(jalanwms);
-	map.addLayer(kabwms);
+	//map.addLayer(kabwms);
     
     // On the fly reprojection
     var bounds = new OpenLayers.Bounds(
@@ -54,7 +54,30 @@ function initMap() {
 	var koordinat = new OpenLayers.Control.MousePosition();
 	map.addControl(koordinat);
 	
+	//--------Featureinfo
 	
+	info = new OpenLayers.Control.WMSGetFeatureInfo({
+            url: 'http://localhost:8080/geoserver/Quansing/wms', 
+            title: 'Identify features by clicking',
+            queryVisible: true,
+            eventListeners: {
+                getfeatureinfo: function(event) {
+                    map.addPopup(new OpenLayers.Popup.FramedCloud(
+                        "chicken", 
+                        map.getLonLatFromPixel(event.xy),
+                        null,
+                        event.text,
+                        null,
+                        true
+                    ));
+                }
+            }
+        });
+        map.addControl(info);
+        info.activate();
+			
+            map.addControl(new OpenLayers.Control.MousePosition());
+			
 	//--------JS Method for layers------
 	
 	//#LayerJalan DOM 
