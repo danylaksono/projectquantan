@@ -12,8 +12,23 @@
 /*-------------------------------------------
 		    Imports, main body
   ------------------------------------------- */
+html, body {
+	height: 100%;
+}
 
-.largeIcon{
+.fill { 
+	min-height: 100%;
+	height: 100%;
+}
+
+body {
+    padding-top:60px;
+    -webkit-box-sizing: padding-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: padding-box;    /* Firefox, other Gecko */
+    box-sizing: padding-box;         /* Opera/IE 8+ */
+}
+
+  .largeIcon{
     font-size: 50px;
     padding-left: 35px;
     padding-right: 35px;
@@ -142,29 +157,42 @@ a:hover{
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
-	height: 680px;
+	height: 100%;
 	width: 100%;
-	display: block;
-	padding: 50px 0 50px 0;
-	
-	
+	padding-top: 60px;
+	height: auto !important;
+    min-height: 100%;
+	margin: 0 auto -60px;
 }
 
-
-#mukapeta .map {
-        height: 400px;
-        width: 100%;
-		position:fixed;
-		z-index: -1;
-      }
-  
-  
+ 
   
 
 /*-------------------------------------------
 		    Footer
   ------------------------------------------- */
   
- 
+/* Set the fixed height of the footer here */
+#footer {
+height: 60px;
+}
+#footer {
+background-color: #555;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+	#footer {
+	margin-left: -20px;
+	margin-right: -20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	}
+}
+
+
+
+    
+
 
  

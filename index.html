@@ -17,27 +17,42 @@
 	<!-- openlayers mapscript -->
 	<script src="js/OpenLayers.js"></script>
 	<script>
-      function init() {
-        map = new OpenLayers.Map("map");
-        var mapnik         = new OpenLayers.Layer.OSM();
-        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-        var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-        var position       = new OpenLayers.LonLat(101.45000,0.53333).transform( fromProjection, toProjection);
-        var zoom           = 9; 
- 
-        map.addLayer(mapnik);
-        map.setCenter(position, zoom );
-      }
+		function init() {
+			map = new OpenLayers.Map("map");
+			var mapnik         = new OpenLayers.Layer.OSM();
+			var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+			var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+			var position       = new OpenLayers.LonLat(101.45000,0.53333).transform( fromProjection, toProjection);
+			var zoom           = 9; 
+	 
+			map.addLayer(mapnik);
+			map.setCenter(position, zoom );
+			
+						
+			// Initialize WMS layer from our local GeoServer
+			var bwms = new OpenLayers.Layer.WMS( "Jaringan Jalan",
+				  "http://localhost:8080/geoserver/wms?",
+				  { "transparent":"true",
+					"layers":"Projectkuantan:jaringanjalanwgs",
+					"format":"image/png" }
+				  );
+			
+			// Add WMS layer to our map
+			//map.addLayer(geojson_layer);
+			//map.zoomToExtent(geojson_layer.getDataExtent());
+			
+	  
+		}
     </script>
 	<style type="text/css">
-      html, body, #map {
-          width: 100%;
-          height: 100%;
-          margin: 0;
+      #map{
+          width:100%;
+          height:100%;
+          margin:0;
       }
-    </style>
-
-	</head>
+	</style>
+	
+</head>
 
 <body onload="init();">
     
@@ -206,7 +221,7 @@
                         </div>
                     </div>
                 </div>
-                
+            </div>    
         </ul>
     </div>
    
@@ -215,21 +230,8 @@
 	<!--Muka Peta-->
 	<section id="mukapeta">
 		<div id="map"></div>
-	</section>
+    </section>
 	
-	
-    <!-- Footer-->
-	<footer>
-		<div class="navbar navbar-default navbar-fixed-bottom">
-			<div class="container">
-				<p class="navbar-text">Copyright &copy; Kuantan Singingi </p>
-			</div>  
-		</div>
-	</footer>
-
-	<!-- references. ditaruh di belakang biar gak lemot -->
-    <script src="js/jquery.js" ></script>
-    <script src="js/bootstrap.js" ></script>
 	
 	<!--kotak dialog Masuk Admin-->
 	<div class="modal fade" id="masuk">
@@ -307,7 +309,20 @@
 	    </div>
 	</div>
 	
-        
+    <!-- Footer-->
+	<footer>
+		<div class="navbar navbar-inverse navbar-fixed-bottom">
+			<div class="container">
+				<p class="navbar-text">Copyright &copy; Kuantan Singingi </p>
+			</div>  
+		</div>
+	</footer>
+
+	<!-- references. ditaruh di belakang biar gak lemot -->
+    <script src="js/jquery.js" ></script>
+    <script src="js/bootstrap.js" ></script>
+
+    
 	<!-- Side Menu -->
     <script>
     $("#menu-close").click(function(e) {
