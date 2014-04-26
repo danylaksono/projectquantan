@@ -20,6 +20,20 @@ function initMap() {
 	//map.addControl(new OpenLayers.Control.PanZoomBar());   //diaktifkan lagi kalau sudah waktunya
 	map.addControl(new OpenLayers.Control.MousePosition());
 	
+	//wfs
+	var jalanwfs = new OpenLayers.Layer.Vector("WFS Jalan", {
+		strategies: [new OpenLayers.Strategy.Fixed()],    
+		protocol: new OpenLayers.Protocol.WFS({
+			version:"1.1.0",
+			url: "http://localhost:8080/geoserver/wfs",
+			featureType: "wfs_workspace:jaringanjalan",
+			featureNS: "localhost:8080/wfs_workspace",
+			geometryName: "geom"
+			})
+	});
+	
+
+	
 	//wms
 	jalanwms = new OpenLayers.Layer.WMS("jaringanjalanwgs",
 				"http://localhost:8080/geoserver/Quansing/wms",	//change here
@@ -41,7 +55,7 @@ function initMap() {
 					tiled: true
 				});
 	
-	map.addLayer(jalanwms);
+	map.addLayers([jalanwfs]);
 	//map.addLayer(kabwms);
     
     // On the fly reprojection
