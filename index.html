@@ -16,7 +16,10 @@
 	
 	<!-- openlayers mapscript -->
 	<script src="js/OpenLayers.js"></script>
+	<script src="js/DeleteFeature.js"></script>
+	<script src="js/EditingPanel.js"></script>
 	<link rel="stylesheet" href="js/theme/default/style.css">
+	<link rel="stylesheet" href="css/editing-panel.css" type="text/css">
 	
 	<style type="text/css">
     html, body, #map {
@@ -178,7 +181,8 @@
                                             <table class="table">
                                                 <tr>
                                                     <td>
-                                                        <a href="#">first item</a>
+                                                        <input id="toggle-id" type="checkbox">
+							<label for="toggle-id">gambar garis</label>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -186,29 +190,22 @@
                                                         <a href="#">second item</a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>
-                                                        <a href="#">third item</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <a href="#">Comments</a>
-                                                        <span class="badge">42</span>
-                                                    </td>
-                                                </tr>
+                                                
                                             </table>
                                         </div>
                                     </div>                                    
                                 </div>
                    
-					<div class="panel-heading"><i class="fa fa-info-circle"></i> &nbsp;Informasi</div>
-					<div class="panel-body">
-						<div id="info">
-							<h4> <i></br> Klik pada marker untuk memunculkan informasi </i> </h4> 
-						</div>			
-					
-					</div>
+					           
+							   
+							   <!--
+							   <div id='asd'>
+							   <script>
+							   var panel = new EditingPanel('asd', jalan);
+							   map.addControl(panel);
+							   </script>
+							   </div>
+							   -->
 					</div>
 				
 						</div>

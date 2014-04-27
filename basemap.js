@@ -1,4 +1,3 @@
-//
 //fungsi utama pemanggilan peta
 function initMap() {
 	
@@ -21,43 +20,38 @@ function initMap() {
 	//map.addControl(new OpenLayers.Control.PanZoomBar());   //diaktifkan lagi kalau sudah waktunya
 	map.addControl(new OpenLayers.Control.MousePosition());
 	
-	//wfs
-	var jalanwfs = new OpenLayers.Layer.Vector("WFS Jalan", {
-		strategies: [new OpenLayers.Strategy.Fixed()],    
-		protocol: new OpenLayers.Protocol.WFS({
-			version:"1.1.0",
-			url: "http://localhost:8080/geoserver/wfs",
-			featureType: "wfs_workspace:jaringanjalan",
-			featureNS: "localhost:8080/wfs_workspace",
-			geometryName: "geom"
-			})
-	});
-	
-
-	
 	//wms
-	jalanwms = new OpenLayers.Layer.WMS("jaringanjalanwgs",
+	jalanwms = new OpenLayers.Layer.WMS("jaringanJalan84",
 				"http://localhost:8080/geoserver/Quansing/wms",	//change here
 				{
-					LAYERS: 'Quansing:JaringanJalan',			//and here
+					LAYERS: 'Quansing:jaringanJalan84',			//and here
 					STYLES: '',
 					projection: geographic,
 					transparent:true,
 					tiled: true
 				});
 	
-	kabwms = new OpenLayers.Layer.WMS("kuansingkab",
-				"http://localhost:8080/geoserver/Quansing/wms",	//change here
-				{
-					LAYERS: 'Quansing:JaringanJalan2',			//and here
-					STYLES: 'polygon',
-					projection: geographic,
-					transparent:true,
-					tiled: true
-				});
+	map.addLayer(jalanwms);
 	
-	map.addLayers([jalanwfs]);
-	//map.addLayer(kabwms);
+	var jalan = new OpenLayers.Layer.Vector("Jalan", {
+                strategies:[
+        new OpenLayers.Strategy.BBOX(),
+        new OpenLayers.Strategy.Save()],
+                protocol: new OpenLayers.Protocol.WFS({
+                    version: "1.0.0",
+                    url: "http://localhost:8080/geoserver/Quansing/wfs",
+                    featureType: "Jalan"
+                })
+            });
+					
+            map.addLayer(jalan);
+			
+	
+
+	//panel
+	var panel = new EditingPanel(jalan);
+	map.addControl(panel);
+		
     
     // On the fly reprojection
     var bounds = new OpenLayers.Bounds(
@@ -69,10 +63,28 @@ function initMap() {
 	var koordinat = new OpenLayers.Control.MousePosition();
 	map.addControl(koordinat);
 	
+	
+
+	//Drawing
+	var draw = new OpenLayers.Control.DrawFeature(
+    jalan, OpenLayers.Handler.Path);
+    map.addControl(draw);
+	
+	function toggle() {
+    if (document.getElementById("toggle-id").checked) {
+        draw.activate();
+    } else {
+        draw.deactivate();
+    }
+	}
+	document.getElementById("toggle-id").onclick = toggle;
+	toggle();
+
+
 	//--------Featureinfo
 	
-	info = new OpenLayers.Control.WMSGetFeatureInfo({
-            url: 'http://localhost:8080/geoserver/Quansing/wms', 
+	/*info = new OpenLayers.Control.WMSGetFeatureInfo({
+            url: 'http://localhost:8080/geoserver/Quansing/wfs', 
             title: 'Identify features by clicking',
             queryVisible: true,
             eventListeners: {
@@ -93,6 +105,7 @@ function initMap() {
 			
             map.addControl(new OpenLayers.Control.MousePosition());
 			
+	*/
 	//--------JS Method for layers------
 	
 	//#LayerJalan DOM 
@@ -134,7 +147,19 @@ function initMap() {
 	$("#layerBackground").change(function event(){checkBackground()});
 	
 	
+    //Drawing
+	draw = new OpenLayers.Control.DrawFeature(
+    buildings, OpenLayers.Handler.Polygon);
+    map.addControl(draw);
 	
+	function toggle() {
+    if (document.getElementById("toggle-id").checked) {
+        draw.activate();
+    } else {
+        draw.deactivate();
+    }}
+    document.getElementById("toggle-id").onclick = toggle;
+    toggle();	
 	
 	
 	
