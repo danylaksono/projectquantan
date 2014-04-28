@@ -1,3 +1,4 @@
+//
 //fungsi utama pemanggilan peta
 function initMap() {
 	
